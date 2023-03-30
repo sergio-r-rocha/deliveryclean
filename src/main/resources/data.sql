@@ -1,0 +1,2 @@
+insert into veiculos (nome, marca, modelo, data_fabricacao, consumo_cidade, consumo_rodovias, excluido) values ('Master-AAA0123', 'Renault', 'Master', '2022-10-10', 10, 18, false)
+insert into veiculos (nome, marca, modelo, data_fabricacao, consumo_cidade, consumo_rodovias, excluido) values ('Sprinter-BBB01234', 'Mercedes-Benz', 'Sprinter', '2023-10-10', 14, 16, false)
