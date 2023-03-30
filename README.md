@@ -23,6 +23,8 @@
 http://localhost:8080/swagger-ui/index.html
 
 ## Observação
+Tem duas classes para ordenação, uma por gasto e outra por ano. Fiz isso, como exemplo, para aplicar recursos do framework e demonstrar boas práticas de programação.
+
 Para facilitar um teste inicial, o sistema cadastra 2 veículos. Um mais econômico na cidade e o outro mais econômico na rodovia.
 
 Reiniciando a aplicação os dados são apagados poruq eforam salvos em memória.
