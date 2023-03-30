@@ -27,4 +27,4 @@ Tem duas classes para ordenação, uma por gasto e outra por ano. Fiz isso, como
 
 Para facilitar um teste inicial, o sistema cadastra 2 veículos. Um mais econômico na cidade e o outro mais econômico na rodovia.
 
-Reiniciando a aplicação os dados são apagados poruq eforam salvos em memória.
+Reiniciando a aplicação os dados são apagados porque estão sendo salvos em memória.
