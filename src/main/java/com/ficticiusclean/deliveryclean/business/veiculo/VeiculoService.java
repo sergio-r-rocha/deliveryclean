@@ -43,7 +43,7 @@ public class VeiculoService {
 	}
 	
 	public Veiculo buscarPorId(Long id) {
-		return veiculoRepository.findById(id).orElse(null);
+		return veiculoRepository.getReferenceById(id);
 	}
 
 }

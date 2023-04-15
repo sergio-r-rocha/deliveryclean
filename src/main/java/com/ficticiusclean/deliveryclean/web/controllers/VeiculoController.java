@@ -52,7 +52,13 @@ public class VeiculoController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id) {
 		veiculoService.excluir(id);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ConsultaVeiculoDto> buscar(@PathVariable Long id) {
+		var consultaVeiculoDto = new ConsultaVeiculoDto(veiculoService.buscarPorId(id));
+		return ResponseEntity.ok(consultaVeiculoDto);
 	}
 
 }

@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,8 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.ficticiusclean.deliveryclean.entities.Veiculo;
+import com.ficticiusclean.deliveryclean.repositories.VeiculoRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @SpringBootTest
 @TestPropertySource(properties = { "delivery.clean.soft-delete=false" })
@@ -25,6 +31,9 @@ class VeiculoServiceTest {
 	
 	@Autowired
 	private VeiculoService service;
+	
+	@Autowired
+	private VeiculoRepository repository;
 	
 	private VeiculoFakeBuilder veiculoFakeBuilder;
 	
@@ -235,13 +244,15 @@ class VeiculoServiceTest {
 	}
 	
 	@Test
+	@Transactional
 	void excluir() {
 		Long id = 1L;
+		var list = repository.findAll();
 		Veiculo veiculo = service.buscarPorId(id);
+		System.out.println(veiculo);
 		assertNotNull(veiculo);
 		service.excluir(id);
-		veiculo = service.buscarPorId(id);
-		assertNull(service.buscarPorId(id));
+		assertThrows(Exception.class, () -> service.buscarPorId(id));
 	}
 
 }
